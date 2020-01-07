@@ -32,28 +32,54 @@ function makeBtns() {
             var results = response.data;
 
             for (var i=0; i<results.length; i++) {
+                
                 // making a img div
+                var imgDiv = $("<div>");
+                imgDiv.attr("class", "gif-pics")
                 var imgbox = $("<img>");
+                imgbox.attr("class", "gifs");
+                imgbox.attr("still-gifs", stillUrl);
+                imgbox.attr("animate-gifs", imgUrl);
+                imgbox.attr("src", stillUrl);
+                imgbox.attr("gif-status", "still")
+
                 // the ratings to be shown
                 var rating = results[i].rating;
                 var ratingDisplay = $("<p>").text("Rating: " + rating);
+                imgDiv.append(ratingDisplay);
+
                 // linking the gif url 
-                var imgURL = results[i].images.fixed_height.url;
-                var gifImg = imgbox.attr("src", imgURL);
-                $(".gif-here").prepend(gifImg);
-                $(".gif-here").prepend(ratingDisplay);
+                var imgUrl = results[i].images.fixed_height.url;
+                var stillUrl = results[i].images.fixed_height_still.url;
+                imgDiv.append(imgbox);
+                $(".gif-here").prepend(imgDiv);
+
+                // function to pause or animate gifs
+                $(".gifs").on("click", function() {
+                    var status = $(this).attr("gif-status")
+                    if (status === "still") {
+                        $(this).attr("src", $(this).attr("animate-gifs"));
+                        $(this).attr("gif-status", "animated");
+                    } else {
+                        $(this).attr("src", $(this).attr("still-gifs"));
+                        $(this).attr("gif-status", "still")
+                    }
+                })
             };
         })
+
+
     })
+
+
 }
 makeBtns();
 
 // function to add another kind of emotion
 $(".add-button").on("click", function(){
     var emojinput = $(".user-input").val();
-    console.log(emojinput);
     topics.push(emojinput);
-    console.log("why isnt it working???")
     makeBtns();
 })
+
 
