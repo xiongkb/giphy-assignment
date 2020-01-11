@@ -1,0 +1,15 @@
+button {
+    background: #fff;
+    margin: 0 5px;
+    border-radius: 10px;
+    font-size: 16px;
+    border: #e67400 2px solid;
+
+}
+.gif-pics {
+    border: #e67400 5px solid;
+    width: fit-content;
+    padding: 5px;
+    margin: 5px;
+    float: left;
+}

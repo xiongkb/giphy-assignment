@@ -31,13 +31,16 @@ function makeBtns() {
         }).then(function(response){
             var results = response.data;
 
-            for (var i=0; i<results.length; i++) {
+            for (var i = 0; i < results.length; i++) {
                 
                 // making a img div
                 var imgDiv = $("<div>");
                 imgDiv.attr("class", "gif-pics")
                 var imgbox = $("<img>");
                 imgbox.attr("class", "gifs");
+                var imgUrl = results[i].images.fixed_height.url;
+                var stillUrl = results[i].images.fixed_height_still.url;
+                
                 imgbox.attr("still-gifs", stillUrl);
                 imgbox.attr("animate-gifs", imgUrl);
                 imgbox.attr("src", stillUrl);
@@ -48,24 +51,21 @@ function makeBtns() {
                 var ratingDisplay = $("<p>").text("Rating: " + rating);
                 imgDiv.append(ratingDisplay);
 
-                // linking the gif url 
-                var imgUrl = results[i].images.fixed_height.url;
-                var stillUrl = results[i].images.fixed_height_still.url;
+                // linking the gif url
                 imgDiv.append(imgbox);
                 $(".gif-here").prepend(imgDiv);
-
-                // function to pause or animate gifs
-                $(".gifs").on("click", function() {
-                    var status = $(this).attr("gif-status")
-                    if (status === "still") {
-                        $(this).attr("src", $(this).attr("animate-gifs"));
-                        $(this).attr("gif-status", "animated");
-                    } else {
-                        $(this).attr("src", $(this).attr("still-gifs"));
-                        $(this).attr("gif-status", "still")
-                    }
-                })
             };
+            // function to pause or animate gifs
+            $(".gifs").on("click", function() {
+                var status = $(this).attr("gif-status")
+                if (status === "still") {
+                    $(this).attr("src", $(this).attr("animate-gifs"));
+                    $(this).attr("gif-status", "animated");
+                } else {
+                    $(this).attr("src", $(this).attr("still-gifs"));
+                    $(this).attr("gif-status", "still")
+                }
+            })
         })
 
 
