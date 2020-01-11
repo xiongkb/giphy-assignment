@@ -104,3 +104,21 @@ button {
         width: 35%;
     }
 }
+@media screen and (max-width: 400px) {
+    .giphy-api {
+        width: 50%;
+    }
+    .gif-pics {
+        width: 95%;
+        height: fit-content;
+    }
+    .gifs {
+        width: 100%;
+    }
+    .form {
+        margin-left: 5%;
+    }
+    .cat-facts {
+        width: 35%;
+    }
+}
