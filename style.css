@@ -1,21 +1,91 @@
-button {
+body {
+    background: #ccc;
+}
+.giphy-api {
+    float: left;
+    width: 80%;
+    margin: 5px 10px;
+    height: 200px;
+}
+.cat-facts {
+    position: fixed;
+    right: 0;
+    width: 15%;
+    margin: 5px 10px;
+    border-radius: 20px;
+    border: #e67400 5px ridge;
+    text-align: center;
+    padding: 5px;
     background: #fff;
-    margin: 0 5px;
+}
+button {
+    margin: 0 5px 5px 5px;
     border-radius: 10px;
     font-size: 16px;
     border: #e67400 2px solid;
 
 }
+:focus {
+    outline: unset;
+}
 .gif-pics {
-    border: #e67400 5px solid;
+    border: #e67400 5px ridge;
     border-radius: 20px;
     width: fit-content;
     padding: 5px;
     margin: 5px;
     float: left;
 }
+.form {
+    margin-top: 20px;
+    margin-left: 35%;
+    margin-bottom: 20px;
+    font-size: 24px;
+}
 .add-button {
     background: #e67400;
     border-radius: 10px;
-    font-size: 12px;
+    border: #ff9a34;
+    font-size: 16px;
+    padding: 2px 5px;
+    height: 25px;
+}
+.gifs {
+    border-radius: 20px;
+}
+.user-input {
+    border-radius: 10px;
+    padding: 2px 5px;
+    border: #e67400 2px solid;
+    width: 230px;
+    height: 20px;
+    font-size: 16px;
+}
+.cat-button:hover, button:hover, .add-button:hover, img:hover {
+    cursor: pointer;
+}
+
+/* media query for 780px */
+@media screen and (max-width: 780px) {
+    .user-input {
+        width: 183px;
+    }
+}
+/* media query for 500px */
+@media screen and (max-width: 500px) {
+    .giphy-api {
+        width: 66%;
+    }
+    .gif-pics {
+        width: 66%;
+    }
+    .gifs {
+        width: 100%;
+    }
+    .form {
+        margin-left: 5%;
+    }
+    .cat-facts {
+        width: 35%;
+    }
 }
