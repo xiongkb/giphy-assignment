@@ -40,17 +40,21 @@ function makeBtns() {
                 imgbox.attr("class", "gifs");
                 var imgUrl = results[i].images.fixed_height.url;
                 var stillUrl = results[i].images.fixed_height_still.url;
-                
+
                 imgbox.attr("still-gifs", stillUrl);
                 imgbox.attr("animate-gifs", imgUrl);
                 imgbox.attr("src", stillUrl);
                 imgbox.attr("gif-status", "still")
 
+                // title of the gif
+                var title = results[i].title;
+                var titleDisplay = $("<h4>").text(title);
+                imgDiv.append(titleDisplay);
+                imgbox.attr("alt", title);
                 // the ratings to be shown
                 var rating = results[i].rating;
                 var ratingDisplay = $("<p>").text("Rating: " + rating);
                 imgDiv.append(ratingDisplay);
-
                 // linking the gif url
                 imgDiv.append(imgbox);
                 $(".gif-here").prepend(imgDiv);
@@ -82,4 +86,23 @@ $(".add-button").on("click", function(){
     makeBtns();
 })
 
+// =========== api call for random cat fact ============
+var settings = {
+	"async": true,
+	"crossDomain": true,
+	"url": "https://brianiswu-cat-facts-v1.p.rapidapi.com/facts",
+	"method": "GET",
+	"headers": {
+		"x-rapidapi-host": "brianiswu-cat-facts-v1.p.rapidapi.com",
+		"x-rapidapi-key": "8c167b666emsh30aa5d11ebece74p18fc6fjsn3e0b3e9deb30"
+	}
+}
+$(".cat-button").on("click", function() {
+    ranNum = Math.floor(Math.random() * 23);
+    console.log(ranNum);
 
+    $.ajax(settings).done(function (response) {
+        var fact = response.all[ranNum].text;
+        $(".fact-goes-here").text(fact);
+    });
+});

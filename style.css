@@ -8,8 +8,14 @@ button {
 }
 .gif-pics {
     border: #e67400 5px solid;
+    border-radius: 20px;
     width: fit-content;
     padding: 5px;
     margin: 5px;
     float: left;
+}
+.add-button {
+    background: #e67400;
+    border-radius: 10px;
+    font-size: 12px;
 }
