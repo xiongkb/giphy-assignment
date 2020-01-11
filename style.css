@@ -70,6 +70,21 @@ button {
     .user-input {
         width: 183px;
     }
+    .giphy-api {
+        width: 70%;
+    }
+    .gif-pics {
+        height: 300px;
+    }
+    .gifs {
+        width: fit-content;
+    }
+    .form {
+        margin-left: 5%;
+    }
+    .cat-facts {
+        width: 25%;
+    }
 }
 /* media query for 500px */
 @media screen and (max-width: 500px) {
