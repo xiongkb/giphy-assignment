@@ -18,7 +18,7 @@ function makeBtns() {
         emoBtn.attr("emotName", emotion);
         $(".buttons-here").append(emoBtn);
     }
-
+    
     // function for buttons that calls api to show gifs
     $("button").on("click", function() {
         var feeling = $(this).attr("emotName");
@@ -82,7 +82,12 @@ makeBtns();
 // function to add another kind of emotion
 $(".add-button").on("click", function(){
     var emojinput = $(".user-input").val();
-    topics.push(emojinput);
+    if (!(topics.includes(emojinput))) {
+        topics.push(emojinput);
+    } else {
+        alert("You already have that have that added!")
+    }
+    
     makeBtns();
 })
 
